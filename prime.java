@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class prime {
+public class Prime {
   private int number;
 
-  public prime(int num) {
+  public Prime(int num) {
     if (num <= 0) {
       throw new IllegalArgumentException();
     }

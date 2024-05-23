@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashMap;
 public class primeMain {
   public static void main(String[] args) {
     prime number = new prime(32);

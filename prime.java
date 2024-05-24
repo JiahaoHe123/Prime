@@ -3,6 +3,7 @@ import java.util.HashMap;
 
 public class Prime {
   private int number;
+  private int phi;
 
   public Prime(int num) {
     if (num <= 0) {
@@ -46,6 +47,7 @@ public class Prime {
       double end = Math.pow((double) key, (double) power - 1);
       result = result * ((int) front - (int) end);
     }
+    phi = result;
     return result;
   }
 
@@ -58,13 +60,16 @@ public class Prime {
       double end = Math.pow((double) key, (double) power - 1);
       result = result * ((int) front - (int) end);
     }
+    phi = result;
     return result;
   }
 
   public ArrayList<Integer> computePrimitiveRoot() {
     ArrayList<Integer> result = new ArrayList<>();
     int n = number;
-    int phi = findPhi();
+    if (phi == 0) {
+      phi = findPhi();
+    }
     for (int i = 2; i < n; i++) {
       int power = 1;
       int num = i;
@@ -77,6 +82,7 @@ public class Prime {
       }
       power = 1;
     }
+
     return result;
   }
 
@@ -89,17 +95,23 @@ public class Prime {
       result.add(1);
       return result;
     }
+    if (phi == 0) {
+      phi = findPhi();
+    }
+    if (phi % order != 0) {
+      ArrayList<Integer> result = new ArrayList<>();
+      return result;
+    }
     ArrayList<Integer> result = new ArrayList<>();
     int n = number;
-    int phi = order;
     for (int i = 2; i < n; i++) {
       int power = 1;
       int num = i;
-      while (((num * i) % n != 1 && (num * i) % n != 0) && power <= phi) {
+      while (((num * i) % n != 1 && (num * i) % n != 0) && power <= order) {
         num = (num * i) % n;
         power++;
       }
-      if (power == phi - 1) {
+      if (power == order - 1) {
         result.add((int) i);
       }
       power = 1;

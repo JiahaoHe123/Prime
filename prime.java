@@ -1,3 +1,7 @@
+/*
+ * This class is used to find the primitive roots, Euler's phi, and numbers with
+ * a given order in a finite number system. This class could also find the prime factorization.
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -5,6 +9,9 @@ public class Prime {
   private int number;
   private int phi;
 
+  /*
+   * num: the given number
+   */
   public Prime(int num) {
     if (num <= 0) {
       throw new IllegalArgumentException();
@@ -12,6 +19,9 @@ public class Prime {
     this.number = num;
   }
 
+  /*
+   * find the prime factorization
+   */
   public HashMap<Integer, Integer> primeFactorization() {
     HashMap<Integer, Integer> nums = new HashMap<>();
     int power = 0;
@@ -31,6 +41,10 @@ public class Prime {
     return nums;
   }
 
+  /*
+   * print the prime factorization
+   * Factorization: the prime factorization of a given number
+   */
   public String factorizationToString(HashMap<Integer, Integer> factorization) {
     String result = "";
     for (Integer key : factorization.keySet()) {
@@ -39,6 +53,10 @@ public class Prime {
     return result;
   }
 
+  /*
+   * find Euler's phi
+   * Factorization: the prime factorization of a given number
+   */
   public int findPhi(HashMap<Integer, Integer> factorization) {
     int result = 1;
     for (Integer key : factorization.keySet()) {
@@ -51,6 +69,9 @@ public class Prime {
     return result;
   }
 
+  /*
+   * find Euler's phi
+   */
   public int findPhi() {
     int result = 1;
     HashMap<Integer, Integer> factorization = primeFactorization();
@@ -64,6 +85,9 @@ public class Prime {
     return result;
   }
 
+  /*
+   * find all primitive roots in a given finite number system
+   */
   public ArrayList<Integer> computePrimitiveRoot() {
     ArrayList<Integer> result = new ArrayList<>();
     int n = number;
@@ -82,10 +106,13 @@ public class Prime {
       }
       power = 1;
     }
-
     return result;
   }
 
+  /*
+   * Find all number with given order in a finite number system
+   * order: the given order
+   */
   public ArrayList<Integer> numberWithOrder(int order) {
     if (order > number) {
       throw new IllegalArgumentException();

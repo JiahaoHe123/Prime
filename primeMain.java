@@ -1,3 +1,6 @@
+/*
+ * This is a sample mean file to interact with prime class
+ */
 import java.util.*;
 
 public class primeMain {
@@ -22,7 +25,7 @@ public class primeMain {
                } else if (ans.indexOf('4') >= 0) {
                   System.out.println("Please type the order n(Please type Integer)");
                   int order = console.nextInt();
-                  System.out.print("All number in this finite number system with order " + order + " are: ");
+                  System.out.print("All numbers in this finite number system with order " + order + " are: ");
                   System.out.println(number.numberWithOrder(order).toString());
                   System.out.println();
                } else if (ans.indexOf('5') >= 0) {
@@ -52,16 +55,22 @@ public class primeMain {
       System.out.println("System ended");
    }
 
+   /*
+    * print options
+    */
    public static void options() {
       System.out.println("Please choose what you want to do with this number");
       System.out.println("1: find prime factorization");
       System.out.println("2: find Euler's phi of this number");
       System.out.println("3: find all primitive roots of this number");
       System.out.println("4: find all numbers with order n");
-      System.out.println("5: find all of the above");
+      System.out.println("5: find all of the above except 4");
       System.out.println("6: choose another number");
    }
 
+   /*
+    * show the prime factorization
+    */
    public static HashMap<Integer, Integer> showFactorization(Prime number) {
       HashMap<Integer, Integer> result = number.primeFactorization();
       System.out.println("the prime factorization is: " + number.factorizationToString(result));
@@ -69,6 +78,9 @@ public class primeMain {
       return result;
    }
 
+   /*
+    * find the phi of given number
+    */
    public static void findPhi(HashMap<Integer, Integer> factorization, Prime number) {
       int phi = 0;
       if (factorization != null) {
@@ -80,6 +92,9 @@ public class primeMain {
       System.out.println();
    }
 
+   /*
+    * find primitive roots in a give finite number system
+    */
    public static void primitiveRoot(Prime number) {
       List<Integer> primitiveRoot = number.computePrimitiveRoot();
       if (primitiveRoot.size() == 0) {

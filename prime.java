@@ -114,7 +114,7 @@ public class Prime {
    * order: the given order
    */
   public ArrayList<Integer> numberWithOrder(int order) {
-    if (order > number) {
+    if (order >= number) {
       throw new IllegalArgumentException();
     }
     if (order == 1) {
